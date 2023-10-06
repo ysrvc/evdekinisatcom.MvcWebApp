@@ -41,6 +41,7 @@ namespace evdekinisatcom.MvcWebApp_App.Entity.Entities
         public virtual List<OrderDetail> OrderDetails { get; set; }
         public virtual List<Comment> Comments { get; set; }
 
+        public string? isBoosted { get; set; }
 
 
 
