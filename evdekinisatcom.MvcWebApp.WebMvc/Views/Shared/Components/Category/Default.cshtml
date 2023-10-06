@@ -1,0 +1,46 @@
+﻿@model List<CategoryViewModel>
+
+
+@foreach (var category in Model.Where(c => c.ParentCategoryId == 1))
+{
+    @if (category.Id != 1)
+    {
+        <li>
+            <a asp-action="Index" asp-controller="Product" asp-route-id="@category.Id">@category.Name</a>
+
+            <ul>
+                @foreach (var subCategory in Model)
+                {
+                    @if (category.Id == subCategory.ParentCategoryId)
+                    {
+                        <li >
+                            <a class="text-wrap" asp-action="Index" asp-controller="Product" asp-route-id="@subCategory.Id">
+                                @subCategory.Name
+                            </a>
+                        </li>
+                    }
+                }
+            </ul>
+
+        </li>
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

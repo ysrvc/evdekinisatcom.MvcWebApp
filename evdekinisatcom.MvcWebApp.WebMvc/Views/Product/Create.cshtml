@@ -1,0 +1,124 @@
+﻿@model ProductViewModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "_LayoutBase";
+}
+
+
+
+
+
+
+
+<!--section start-->
+<section class="register-page section-b-space">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Ürün Ekle</h3>
+                <div class="theme-card">
+                    <form method="post" asp-action="Create" class="theme-form" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="form-row row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Title" class="control-label">Başlık :</label>
+                                    <input asp-for="Title" class="form-control" placeholder="Başlık giriniz" />
+                                    <span asp-validation-for="Title" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Brand" class="control-label">Marka</label>
+                                    <input asp-for="Brand" class="form-control" placeholder="Marka giriniz" />
+                                    <span asp-validation-for="Brand" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Price" class="control-label">Fiyat</label>
+                                    <input asp-for="Price" class="form-control" placeholder="Fiyat giriniz" />
+                                    <span asp-validation-for="Price" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Color" class="control-label">Renk</label>
+                                    <select class="form-control" asp-for="Color">
+                                        <option value="">Renk Seçiniz...</option>
+                                        <option>Açık Mavi</option>
+                                        <option>Altın</option>
+                                        <option>Bej</option>
+                                        <option>Beyaz</option>
+                                        <option>Bordo</option>                                       
+                                        <option>Gri</option>
+                                        <option>Gümüş</option>
+                                        <option>Kahverengi</option>
+                                        <option>Kırmızı</option>
+                                        <option>Lacivert</option>
+                                        <option>Mavi</option>
+                                        <option>Mor</option>
+                                        <option>Pembe</option>
+                                        <option>Sarı</option>
+                                        <option>Siyah</option>
+                                        <option>Turkuaz</option>
+                                        <option>Turuncu</option>
+                                        <option>Yeşil</option>                                        
+                                    </select>
+                                    <span asp-validation-for="Color" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="CategoryId" class="control-label">Kategori Seçiniz</label>
+                                    <select class="form-control" asp-items="@ViewBag.Categories" asp-for="CategoryId">
+                                        <option value="">Kategori Seçiniz...</option>
+                                    </select>
+                                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Condition" class="control-label">Ürünün Durumu</label>
+                                    <select class="form-control" asp-for="Condition">
+                                        <option value="">Durum Seçiniz...</option>
+                                        <option>Yeni & Etiketli</option>
+                                        <option>Az Kullanılmış</option>
+                                        <option>Kullanılmış</option>
+                                    </select>
+                                    <span asp-validation-for="Condition" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="headerImage" class="control-label">Kapak Fotoğrafı</label>
+                                    <input name="headerImage" class="form-control" type="file" placeholder="Kapak fotoğrafı seçiniz" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="images" class="control-label">Ürün Fotoğrafları</label>
+                                    <input name="images" class="form-control" type="file" multiple placeholder="Ürün fotoğrafları seçiniz" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label asp-for="Description" class="control-label">Ürün Açıklaması</label>
+                                    <textarea asp-for="Description" class="form-control" rows="3" placeholder="Ürün açıklaması giriniz"></textarea>
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center col-md-12">
+                            <input type="submit" value="Kaydet" class="btn btn-primary" />
+                            <div class="mt-3">
+                                <a asp-controller="Account" asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Section ends-->
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,180 @@
+﻿@model ProductViewModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "_LayoutBase";
+}
+
+
+
+
+
+<!-- section start -->
+<section class="section-b-space">
+    <div class="collection-wrapper">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-lg-6">
+
+                    <div class="product-slick">
+
+                        <div>
+                            <img src="@Model.HeaderImageUrl" alt="@Model.Title"
+                                 class="img-fluid blur-up lazyload image_zoom_cls-0">
+                        </div>
+                        @*@foreach (var img in Model.Images)
+                        {
+                            <div>
+                                <img src="@img.ImageUrl" alt="@Model.Title"
+                                     class="img-fluid blur-up lazyload image_zoom_cls-1">
+                            </div>
+                        }*@
+
+                    </div>
+                    <div class="row">
+                        <div class="col-12 p-0">
+                            <div class="slider-nav">
+                                @foreach (var img in Model.Images)
+                                {
+                                    <div>
+                                        <img src="@img.ImageUrl" class="img-fluid blur-up lazyload">
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 rtl-text">
+                    <div class="product-right">
+                        <h2>@Model.Title</h2>
+                        <div class="label-section">
+                            <span class="badge badge-grey-color">Satıcı</span>                            
+                        </div>
+                        <h6>@Model.SellerUsername</h6>
+                        <h3 class="price-detail">@Model.Price</h3>
+                        <ul class="color-variant">
+                            <li>@Model.Color</li>
+                        </ul>
+                        <div class="product-buttons">
+                            <a href="javascript:void(0)" id="cartEffect"
+                               class="btn btn-solid hover-solid btn-animation">
+                                <i class="fa fa-shopping-cart me-1"
+                                   aria-hidden="true"></i> add to cart
+                            </a> <a href="#" class="btn btn-solid">
+                                <i class="fa fa-bookmark fz-16 me-2" aria-hidden="true"></i>İstek Listesi
+                            </a>
+                        </div>
+
+                        <div class="border-product">
+                            <h6 class="product-title">shipping info</h6>
+                            <ul class="shipping-info">
+                                <li>evdekinisat.com Güvencesiyle!</li>
+                                <li>İster AL İster Sat Ücretsiz Kargo!</li>
+                                <li>Ürünü Teslim Aldıktan Sonra Onayla!</li>
+                            </ul>
+                        </div>
+                        <div class="border-product">
+                            <h6 class="product-title">Paylaş</h6>
+                            <div class="product-icon">
+                                <ul class="product-social">
+                                    <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- Section ends -->
+<!-- product-tab starts -->
+<section class="tab-product pt-0 m-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-lg-12">
+                <ul class="nav nav-tabs nav-material" id="top-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="top-home-tab" data-bs-toggle="tab"
+                           href="#top-home" role="tab" aria-selected="true">
+                            <i class="icofont icofont-ui-home"></i>Detaylar
+                        </a>
+                        <div class="material-border"></div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="review-top-tab" data-bs-toggle="tab"
+                           href="#top-review" role="tab" aria-selected="false">
+                            <i class="icofont icofont-contacts"></i>Yorumlar
+                        </a>
+                        <div class="material-border"></div>
+                    </li>
+                </ul>
+                <div class="tab-content nav-material" id="top-tabContent">
+                    <div class="tab-pane fade show active" id="top-home" role="tabpanel"
+                         aria-labelledby="top-home-tab">
+                        <div class="product-tab-discription">
+                            <div class="part">
+                                <p>
+                                    @Model.Description
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="top-review" role="tabpanel" aria-labelledby="review-top-tab">
+                        <div class="product-tab-discription">
+                            <div class="part">                                
+                                @foreach (var item in ViewBag.Comments)
+                                {
+                                    <div class="media">
+                                        <img src="@item.UserProfilePic" alt="" class="img-fluid" />
+                                        <div class="media-body">
+                                            <h5 class="mt-0">@item.Username</h5>
+                                            <p>
+                                                @item.Content
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+                        @if (User.Identity!.IsAuthenticated)
+                        {
+                            <input type="hidden" name="ReturnUrl" value="@Model.ReturnUrl" />
+                            <form asp-action="CreateComment" asp-controller="Product" asp-route-Id="@Model.Id" method="post">
+                                <div class="form-row row">
+                                    <div class="col-md-12">
+                                        <label for="review">Yorum Yap</label>
+                                        <textarea class="form-control" name="Message" placeholder="Bir yorum bırak..."
+                                                  id="exampleFormControlTextarea1" rows="6"></textarea>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <input type="submit" value="Kaydet" class="btn btn-solid w-auto" />
+                                    </div>
+                                </div>
+                            </form>
+                        }
+                        else
+                        {
+                            <a asp-action="Login" asp-controller="Account">Giriş Yap</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- product-tab ends -->
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

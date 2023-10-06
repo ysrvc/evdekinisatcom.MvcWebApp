@@ -1,0 +1,489 @@
+﻿@model UserViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutBase";
+}
+
+
+
+<!--  dashboard section start -->
+<section class="dashboard-section section-b-space user-dashboard-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="dashboard-sidebar">
+                    <div class="profile-top">
+                        <div class="profile-image">
+                            <img src="../assets/images/avtar.jpg" alt="" class="img-fluid">
+                        </div>
+                        <div class="profile-detail">
+                            <h5>@Model.Name</h5>
+                            <h6>@Model.Email</h6>
+                        </div>
+                    </div>
+                    <div class="faq-tab">
+                        <ul class="nav nav-tabs" id="top-tab" role="tablist">
+                            <li class="nav-item">
+                                <a data-bs-toggle="tab" data-bs-target="#info"
+                                   class="nav-link active">Hesap Bilgileri</a>
+                            </li>
+                            <li class="nav-item">
+                                <a data-bs-toggle="tab" data-bs-target="#address"
+                                   class="nav-link">Adres</a>
+                            </li>
+                            <li class="nav-item">
+                                <a data-bs-toggle="tab" data-bs-target="#orders"
+                                   class="nav-link">Aldılarım</a>
+                            </li>
+                            <li class="nav-item">
+                                <a data-bs-toggle="tab" data-bs-target="#orders"
+                                   class="nav-link">Sattıklarım</a>
+                            </li>
+                            <li class="nav-item">
+                                <a data-bs-toggle="tab" data-bs-target="#wishlist"
+                                   class="nav-link">İstek Listem</a>
+                            </li>
+                            <li class="nav-item">
+                                <a data-bs-toggle="tab" data-bs-target="#profile"
+                                   class="nav-link">Satıştakiler</a>
+                            </li>
+                            <li class="nav-item">
+                                <a data-bs-toggle="tab" data-bs-target="#security"
+                                   class="nav-link">Güvenlik</a>
+                            </li>
+                            <li class="nav-item"><a href="/Account/Logout" class="nav-link">Çıkış Yap</a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="faq-content tab-content" id="top-tabContent">
+                    <div class="tab-pane fade show active" id="info">
+                        <div class="counter-section">
+                            <div class="welcome-msg">
+                                <h4>Merhaba, @Model.Name !</h4>
+                                <p>
+                                    Hesap Kontrol Panelinizden, Bakiye ve hesap aktivitelerinizi görüntüleme, hesap bilgilerinizi güncelleme işlemleri yapabilirsiniz.
+                                </p>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="counter-box">
+                                        <img src="../assets/images/icon/dashboard/sale.png" class="img-fluid">
+                                        <div>
+                                            <h3>25</h3>
+                                            <h5>Total Order</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="counter-box">
+                                        <img src="../assets/images/icon/dashboard/homework.png" class="img-fluid">
+                                        <div>
+                                            <h3>5</h3>
+                                            <h5>Pending Orders</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="counter-box">
+                                        <img src="../assets/images/icon/dashboard/order.png" class="img-fluid">
+                                        <div>
+                                            <h3>50</h3>
+                                            <h5>Wishlist</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-account box-info">
+                                <div class="box-head">
+                                    <h4>Hesap Bilgileri</h4>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="box">
+                                            <div class="box-title">
+                                                <h3>İletişim Bilgileri</h3><a href="#">Düzenle</a>
+                                            </div>
+                                            <div class="box-content">
+                                                <h6>@Model.Name @Model.Surname</h6>
+                                                <h6>@Model.Email</h6>
+                                                <h6><a href="#">Şifre Değişikliği</a></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box mt-3">
+                                    <div class="box-title">
+                                        <h3>Adreslerim</h3><a href="#">Adreslerimi Yönet</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="address">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card mt-0">
+                                    <div class="card-body">
+                                        <div class="top-sec">
+                                            <h3>Adreslerim</h3>
+                                            <a href="#" class="btn btn-sm btn-solid">Yeni Ekle</a>
+                                        </div>
+                                        <div class="address-book-section">
+                                            <div class="row g-4">
+                                                <div class="select-box active col-xl-4 col-md-6">
+                                                    <div class="address-box">
+                                                        <div class="top">
+                                                            <h6>@Model.Name <span>home</span></h6>
+                                                        </div>
+                                                        <div class="middle">
+                                                            <div class="address">
+                                                                <p>@Model.Address</p>
+
+                                                            </div>
+                                                            <div class="number">
+                                                                <p>Telefon <span>@Model.PhoneNumber</span></p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="bottom">
+                                                            <a href="javascript:void(0)"
+                                                               data-bs-target="#edit-address"
+                                                               data-bs-toggle="modal" class="bottom_btn">edit</a>
+                                                            <a href="#" class="bottom_btn">Kaldır</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="orders">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card dashboard-table mt-0">
+                                    <div class="card-body table-responsive-sm">
+                                        <div class="top-sec">
+                                            <h3>Aldıklarım</h3>
+                                        </div>
+                                        <div class="table-responsive-xl">
+                                            <table class="table cart-table order-table">
+                                                <thead>
+                                                    <tr class="table-head">
+                                                        <th scope="col">Order Id</th>
+                                                        <th scope="col">Product Details</th>
+                                                        <th scope="col">Status</th>
+                                                        <th scope="col">Price</th>
+                                                        <th scope="col">View</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <a href="javascript:void(0)">
+                                                                <img src="../assets/images/pro3/1.jpg"
+                                                                     class="blur-up lazyloaded" alt="">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <span class="mt-0">#125021</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="fs-6">Purple polo tshirt</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="badge rounded-pill bg-success custom-badge">Shipped</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="theme-color fs-6">$49.54</span>
+                                                        </td>
+                                                        <td>
+                                                            <a href="javascript:void(0)">
+                                                                <i class="fa fa-eye text-theme"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="orders">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card dashboard-table mt-0">
+                                    <div class="card-body table-responsive-sm">
+                                        <div class="top-sec">
+                                            <h3>Sattıklarım</h3>
+                                        </div>
+                                        <div class="table-responsive-xl">
+                                            <table class="table cart-table order-table">
+                                                <thead>
+                                                    <tr class="table-head">
+                                                        <th scope="col">Order Id</th>
+                                                        <th scope="col">Product Details</th>
+                                                        <th scope="col">Status</th>
+                                                        <th scope="col">Price</th>
+                                                        <th scope="col">View</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <a href="javascript:void(0)">
+                                                                <img src="../assets/images/pro3/1.jpg"
+                                                                     class="blur-up lazyloaded" alt="">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <span class="mt-0">#125021</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="fs-6">Purple polo tshirt</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="badge rounded-pill bg-success custom-badge">Shipped</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="theme-color fs-6">$49.54</span>
+                                                        </td>
+                                                        <td>
+                                                            <a href="javascript:void(0)">
+                                                                <i class="fa fa-eye text-theme"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="tab-pane fade" id="wishlist">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card dashboard-table mt-0">
+                                    <div class="card-body table-responsive-sm">
+                                        <div class="top-sec">
+                                            <h3>İstek Listem</h3>
+                                        </div>
+                                        <div class="table-responsive-xl">
+                                            <table class="table cart-table wishlist-table">
+                                                <thead>
+                                                    <tr class="table-head">
+                                                        <th scope="col">image</th>
+                                                        <th scope="col">Order Id</th>
+                                                        <th scope="col">Product Details</th>
+                                                        <th scope="col">Price</th>
+                                                        <th scope="col">Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <a href="javascript:void(0)">
+                                                                <img src="../assets/images/pro3/1.jpg"
+                                                                     class="blur-up lazyloaded" alt="">
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            <span class="mt-0">#125021</span>
+                                                        </td>
+                                                        <td>
+                                                            <span>Purple polo tshirt</span>
+                                                        </td>
+                                                        <td>
+                                                            <span class="theme-color fs-6">$49.54</span>
+                                                        </td>
+                                                        <td>
+                                                            <a href="javascript:void(0)"
+                                                               class="btn btn-xs btn-solid">
+                                                                Move to Cart
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="profile">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card mt-0">
+                                    <div class="card-body">
+                                        <div class="dashboard-box">
+                                            <div class="dashboard-title">
+                                                <h4>Satıcı Profili</h4>
+
+                                            </div>
+                                            <div class="dashboard-detail">
+                                                <div class="details">
+                                                    <table class="table cart-table wishlist-table">
+                                                        <thead>
+                                                            <tr class="table-head">
+                                                                <th scope="col">Toplam Satış</th>
+                                                                <th scope="col">Toplam Kazanç</th>
+                                                                <th scope="col">Bakiye</th>
+                                                                <th scope="col">Son Yapılan Ödeme</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>
+                                                                    1(test)
+                                                                </td>
+                                                                <td>
+                                                                    <span class="mt-0">300(test)</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span>@Model.Balance</span>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="theme-color fs-6">28.09.2023(test)</span>
+                                                                </td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="dashboard-detail">
+                                                <div class="details">
+                                                    <a asp-action="Create" asp-controller="Product">
+                                                        <button type="button"
+                                                                class="btn btn-solid btn-xs">
+                                                            Yeni Ürün Oluştur
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="dashboard-title mt-lg-5 mt-3">
+                                            <h4>Giriş Detayları</h4>
+                                            <a class="edit-link" href="#">edit</a>
+                                        </div>
+                                        <div class="dashboard-detail">
+                                            <ul>
+                                                <li>
+                                                    <div class="details">
+                                                        <div class="left">
+                                                            <h6>Email</h6>
+                                                        </div>
+                                                        <div class="right">
+                                                            <h6>
+                                                                @Model.Email <a class="edit-link"
+                                                                                href="#">Değiştir</a>
+                                                            </h6>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="details">
+                                                        <div class="left">
+                                                            <h6>Telefon</h6>
+                                                        </div>
+                                                        <div class="right">
+                                                            <h6>
+                                                                @Model.PhoneNumber<a class="edit-link"
+                                                                                     href="#">Değiştir</a>
+                                                            </h6>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="details">
+                                                        <div class="left">
+                                                            <h6>Şifre</h6>
+                                                        </div>
+                                                        <div class="right">
+                                                            <h6>
+                                                                ******* <a class="edit-link" href="#">Değiştir</a>
+                                                            </h6>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="security">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card mt-0">
+                                <div class="card-body">
+                                    <div class="dashboard-box">
+                                        <div class="dashboard-title">
+                                            <h4>settings</h4>
+                                        </div>
+                                        <div class="dashboard-detail">
+
+                                            <div class="account-setting">
+                                                <h5>Hesabı Sil</h5>
+                                                <div class="row">
+                                                    <div class="col">
+
+                                                        <button type="button"
+                                                                class="btn btn-solid btn-xs">
+                                                            Kalıcı Olarak Sil
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+<!--  dashboard section end -->
+<!-- Modal start -->
+<div class="modal logout-modal fade" id="logout" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Çıkış Yapılıyor...</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Çıkış Yapmak İstiyor Musunuz ?
+            </div>
+            <div class="modal-footer">
+                <a href="/Account/Index" class="btn btn-dark btn-custom" data-bs-dismiss="modal">Hayır</a>
+                <a href="/Account/Logout" class="btn btn-solid btn-custom">Evet
+                </a>                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal end -->

@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    Layout = "_LayoutBase";
+}
+@model LoginViewModel
+
+
+<div class="row">
+    @if (TempData["message"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["message"]
+        </div>
+    }
+</div>
+
+    <!--section start-->
+    <section class="login-page section-b-space">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h3>Giriş</h3>
+                    <div class="theme-card">
+                    <form class="theme-form" asp-controller="Account" asp-action="Login" method="post">
+                            <div class="form-group">
+                            <input type="hidden" name="ReturnUrl" value="@Model.ReturnUrl" />
+                                <label asp-for="Email" class="form-label">Email :</label>
+                            <input asp-for="Email" class="form-control" placeholder="Email" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Password" class="form-label">Şifre :</label>
+                                <input asp-for="Password" class="form-control" placeholder="Şifreniz..." />
+
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+                        <div class="form-group">
+                            <label asp-for="RememberMe" class="form-label">
+                                <input class="form-check-input" asp-for="RememberMe" />
+                                Beni Hatırla
+                            </label>
+                        </div>
+                        <input type="submit" value="Giriş Yap" class="btn btn-solid w-auto" />
+                    </form>
+                    </div>
+                </div>
+                <div class="col-lg-6 right-login">
+                    <h3>Hesabın Yok Mu?</h3>
+                    <div class="theme-card authentication-right">
+                        <h6 class="title-font">Bir Hesap Oluştur</h6>
+                        <p>
+
+                            Mağazamıza hoş geldiniz! Ücretsiz bir hesapla hemen kayıt olun. Bu sayede evdekinisat.com'da ister alın ister satın. İkinci el alışverişte en iyi deneyim için şimdi kaydolun ve alışverişe başlayın!
+                        </p><a asp-action="Register" asp-controller="Account"
+                               class="btn btn-solid">Kayıt Ol</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Section ends-->
