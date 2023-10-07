@@ -21,7 +21,7 @@ namespace evdekinisatcom.MvcWebApp.Entity.Repositories
 
 		void Delete(int id);
 
-		void Delete(T entity);		
+		void Delete(T entity);
 
 		Task<IEnumerable<T>> GetAll(Expression<Func<T, bool>> filter = null, Func<IQueryable<T>, IOrderedQueryable<T>> orderby = null, params Expression<Func<T, object>>[] includes);
 

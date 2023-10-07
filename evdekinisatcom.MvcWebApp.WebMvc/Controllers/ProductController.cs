@@ -22,8 +22,9 @@ namespace evdekinisatcom.MvcWebApp_App.WebMvc.Controllers
         private readonly ICategoryService _categoryService;
         private readonly IProductService _productService;
         private readonly ICommentService _commentService;
+        private readonly IUnitOfWork _uow;
 
-        public ProductController(IMapper mapper, IProductService productService, IAccountService accountService, ICategoryService categoryService, ICommentService commentService)
+        public ProductController(IMapper mapper, IProductService productService, IAccountService accountService, ICategoryService categoryService, ICommentService commentService, IUnitOfWork uow)
         {
 
             _mapper = mapper;
@@ -31,9 +32,10 @@ namespace evdekinisatcom.MvcWebApp_App.WebMvc.Controllers
             _accountService = accountService;
             _categoryService = categoryService;
             _commentService = commentService;
+            _uow = uow;
         }
 
-        public async Task<IActionResult> Index(string? id)
+        public async Task<IActionResult> Index(string? id, string? filtre)
         {
             
             if (id == null)
@@ -80,6 +82,21 @@ namespace evdekinisatcom.MvcWebApp_App.WebMvc.Controllers
             }
 
 
+
+
+        }
+        [HttpPost]
+        public async Task<IActionResult> Index(ProductViewModel model, string? search)
+        {
+
+            
+
+            
+                var list = await _uow.GetRepository<Product>().GetAll();
+                list = list.Where(a => a.Title.ToLower().Contains(search.ToLower())).ToList();
+           
+
+            return View(_mapper.Map<List<ProductViewModel>>(list));
 
 
         }

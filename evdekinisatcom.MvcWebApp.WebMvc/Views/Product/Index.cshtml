@@ -270,12 +270,19 @@
                                                             <option value="Low to High">100 Products</option>
                                                         </select>
                                                     </div>
-                                                </div>
+                                                    @*<div class="product-page-filter">
+                                                        <label class="control-label">Renk</label>
+                                                        <select class="form-control">
+                                                            <option value="">Renk Seçiniz...</option>
+                                                            <option>Açık Mavi</option>
+                                                        </select>
+                                                    </div>*@
                                             </div>
                                         </div>
                                     </div>
                                     <div class="product-wrapper-grid">
                                         <div class="row margin-res">
+                                            @*@await Component.InvokeAsync("Siralama");*@
                                             @foreach (var product in Model)
                                             {
                                                 <div class="col-xl-3 col-6 col-grid-box">

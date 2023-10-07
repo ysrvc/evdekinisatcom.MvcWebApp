@@ -15,7 +15,7 @@
                             <div class="slider-contain">
                                 <div>
                                     <h4>save 30%</h4>
-                                    <h1>electronic</h1><a href="#" class="btn btn-outline btn-classic">
+                                    <h1>electronic</h1><a asp-controller="Product" asp-action="Index" asp-route-id="2" class="btn btn-outline btn-classic">
                                         shop
                                         now
                                     </a>
@@ -121,9 +121,9 @@
                 <div class="col">
                     <div class="theme-tab layout7-product">
                         <ul class="tabs tab-title">
-                            <li class="current"><a href="tab-1">new arrival</a></li>
-                            <li class=""><a href="tab-2">featured</a></li>
-                            <li class=""><a href="tab-3">special</a></li>
+                            <li class="current"><a href="tab-1">Reklam</a></li>
+                            <li class=""><a href="tab-2">Yeni Gelenler</a></li>
+                            <li class=""><a href="tab-3">Özel</a></li>
                         </ul>
                         <div class="tab-content-cls">
                             <div id="tab-1" class="tab-content active default">
@@ -169,73 +169,13 @@
                             </div>
                             <div id="tab-2" class="tab-content">
                                 <div class="row no-slider">
-                                    <div class="product-box">
-                                        <div class="img-wrapper">
-                                            <div class="front">
-                                                <a href="product-page(no-sidebar).html">
-                                                    <img src="~/themes/assets/images/electronics/pro/13.jpg"
-                                                         class="img-fluid blur-up lazyload bg-img" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="cart-info cart-wrap">
-                                                <button data-bs-toggle="modal" data-bs-target="#addtocart"
-                                                        title="Add to cart">
-                                                    <i class="ti-shopping-cart"></i>
-                                                </button> <a href="javascript:void(0)" title="Add to Wishlist">
-                                                    <i class="ti-heart" aria-hidden="true"></i>
-                                                </a> <a href="#"
-                                                        data-bs-toggle="modal" data-bs-target="#quick-view"
-                                                        title="Quick View">
-                                                    <i class="ti-search"
-                                                       aria-hidden="true"></i>
-                                                </a> <a href="compare.html"
-                                                        title="Compare">
-                                                    <i class="ti-reload"
-                                                       aria-hidden="true"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="details-product">
-                                            <a href="product-page(no-sidebar).html">
-                                                <h6>Slim Fit Shirt</h6>
-                                            </a>
-                                            <h4>$500.00</h4>
-                                        </div>
-                                    </div>
-                                    <div class="product-box">
-                                        <div class="img-wrapper">
-                                            <div class="front">
-                                                <a href="product-page(no-sidebar).html">
-                                                    <img src="~/themes/assets/images/electronics/pro/14.jpg"
-                                                         class="img-fluid blur-up lazyload bg-img" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="cart-info cart-wrap">
-                                                <button data-bs-toggle="modal" data-bs-target="#addtocart"
-                                                        title="Add to cart">
-                                                    <i class="ti-shopping-cart"></i>
-                                                </button> <a href="javascript:void(0)" title="Add to Wishlist">
-                                                    <i class="ti-heart" aria-hidden="true"></i>
-                                                </a> <a href="#"
-                                                        data-bs-toggle="modal" data-bs-target="#quick-view"
-                                                        title="Quick View">
-                                                    <i class="ti-search"
-                                                       aria-hidden="true"></i>
-                                                </a> <a href="compare.html"
-                                                        title="Compare">
-                                                    <i class="ti-reload"
-                                                       aria-hidden="true"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="details-product">
-                                            <a href="product-page(no-sidebar).html">
-                                                <h6>Slim Fit Shirt</h6>
-                                            </a>
-                                            <h4>$500.00</h4>
-                                        </div>
-                                    </div>
 
+
+                                    @await Component.InvokeAsync("Siralama");
+
+
+                                    
+                                    
                                 </div>
                             </div>
                             <div id="tab-3" class="tab-content">
